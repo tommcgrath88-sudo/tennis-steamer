@@ -121,6 +121,10 @@ def main() -> None:
         config.SCRAPE_INTERVAL_MINUTES,
     )
 
+    # Run immediately on startup, then let the scheduler take over
+    logger.info("Running immediate startup cycle...")
+    run_cycle(db)
+
     try:
         scheduler.start()
     except KeyboardInterrupt:
