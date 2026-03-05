@@ -116,12 +116,9 @@ def main() -> None:
         misfire_grace_time=120, # allow up to 2-min delay before skipping
     )
 
-    # Calculate and log the next scheduled fire time
-    job = scheduler.get_job("tennis_scrape")
     logger.info(
-        "Scheduler started — every %d minutes from 09:00. Next run: %s. Press Ctrl+C to stop.",
+        "Scheduler started — every %d minutes from 09:00. Press Ctrl+C to stop.",
         config.SCRAPE_INTERVAL_MINUTES,
-        job.next_run_time.strftime("%H:%M") if job and job.next_run_time else "unknown",
     )
 
     try:
